@@ -20,10 +20,14 @@ declare(strict_types=1);
 
 namespace connection;
 
-use ILIAS\LTIOAuth\OAuthConsumer;
-use ILIAS\LTIOAuth\OAuthToken;
-use ILIAS\LTIOAuth\OAuthRequest;
-use ILIAS\LTIOAuth\OAuthSignatureMethod_HMAC_SHA1;
+//use ILIAS\LTIOAuth\OAuthConsumer;
+//use ILIAS\LTIOAuth\OAuthToken;
+//use ILIAS\LTIOAuth\OAuthRequest;
+//use ILIAS\LTIOAuth\OAuthSignatureMethod_HMAC_SHA1;
+use ceLTIc\LTI\OAuth\OAuthConsumer;
+use ceLTIc\LTI\OAuth\OAuthRequest;
+use ceLTIc\LTI\OAuth\OAuthSignatureMethod_HMAC_SHA1;
+use ceLTIc\LTI\OAuth\OAuthToken;
 use platform\PanoptoConfig;
 use platform\PanoptoException;
 use utils\PanoptoUtils;
@@ -118,6 +122,7 @@ class PanoptoLTIHandler
         $html = '<form id="lti_form" action="' . $launch_url . '" method="post" target="basicltiLaunchFrame"
       enctype="application/x-www-form-urlencoded">';
         foreach ($oauth_params as $key => $value) {
+
             $html .= "<input type='hidden' name='$key' value='" . htmlspecialchars((string)$value, ENT_QUOTES) . "'>";
         }
         $html .= '</form>';
@@ -169,6 +174,8 @@ class PanoptoLTIHandler
         ];
 
         $oauth_params = self::signOAuth($params);
+
+
 
 
         $html = '<form id="lti_form" action="' . $launch_url . '" method="post" target="basicltiLaunchFrame"
