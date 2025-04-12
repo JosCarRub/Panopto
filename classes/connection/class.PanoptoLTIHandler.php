@@ -122,7 +122,9 @@ class PanoptoLTIHandler
         $html = '<form id="lti_form" action="' . $launch_url . '" method="post" target="basicltiLaunchFrame"
       enctype="application/x-www-form-urlencoded">';
         foreach ($oauth_params as $key => $value) {
-
+            if (is_array($value)) {
+                $value = $value[0];
+            }
             $html .= "<input type='hidden' name='$key' value='" . htmlspecialchars((string)$value, ENT_QUOTES) . "'>";
         }
         $html .= '</form>';
@@ -181,6 +183,9 @@ class PanoptoLTIHandler
         $html = '<form id="lti_form" action="' . $launch_url . '" method="post" target="basicltiLaunchFrame"
       enctype="application/x-www-form-urlencoded">';
         foreach ($oauth_params as $key => $value) {
+            if (is_array($value)) {
+                $value = $value[0];
+            }
             $html .= "<input type='hidden' name='$key' value='" . htmlspecialchars((string)$value, ENT_QUOTES) . "'>";
         }
         $html .= '</form>';
