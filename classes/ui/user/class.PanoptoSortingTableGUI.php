@@ -64,10 +64,10 @@ class PanoptoSortingTableGUI extends ilTable2GUI
         $this->pl = ilPanoptoPlugin::getInstance();
         $this->client = PanoptoClient::getInstance();
 
-        $plugin_dir = $this->pl->getDirectory();
+        $plugin_dir = "./Customizing/global/plugins/Services/Repository/RepositoryObject/Panopto";
 
         $this->initColumns($this->pl);
-        $this->setRowTemplate($this->pl->getDirectory() . self::TBL_ROW_TEMPLATE_DIR . self::TBL_ROW_TEMPLATE_NAME, $plugin_dir);
+        $this->setRowTemplate($plugin_dir . self::TBL_ROW_TEMPLATE_DIR . self::TBL_ROW_TEMPLATE_NAME);
 
         $this->setExternalSorting(true);
         $this->setExternalSegmentation(true);
